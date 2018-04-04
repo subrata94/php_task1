@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Task 1</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container well">
+  <form action="task1.php" method="POST">
+    <div class="form-group">
+      <label for="fname">First name:</label>
+      <input class="form-control" id="fname" placeholder="Enter First name" name="fname" autocomplete="off" required>
+    </div>
+    <div class="form-group">
+      <label for="lname">Last Name:</label>
+      <input class="form-control" id="lname" placeholder="Enter last name" name="lname" autocomplete="off" required>
+    </div>
+    <div class="form-group">
+      <label for="name">Full name:</label>
+      <input class="form-control" id="name" name="name" readonly="readonly">
+    </div>
+    <button type="submit" name="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+</body>
+<script>
+    var lname='',fname='';
+    $(function(){
+        
+      $('#fname,#lname').on('keypress',function(e){
+          //console.log(String.fromCharCode(e.which));
+          var c = e.which;
+          console.log(c);
+          if(c >= 65 && c <= 90 || c >= 97 && c <= 123)
+          return true;
+          else
+          return false;
+      });
+      $('#fname').on('keyup',function(){
+          fname = $(this).val().trim(); 
+          //$('#name').val(fname+" "+lname);
+          if(fname !== '' && lname !== ''){
+              flag=0;
+              fname_c=false;
+              $(this).css({"border":"1px solid green"});
+              $('#name').val(fname+" "+lname);
+          }else{
+              flag=1;
+              fname_c=true;
+              $(this).css({"border":"1px solid red"});
+              $('#name').val('');
+          }
+      });
+
+      $('#lname').on('keyup',function(){
+          lname = $(this).val().trim(); 
+          if(fname !== '' && lname !== ''){
+              flag=0;
+              lname_c=true;
+              $(this).css({"border":"1px solid green"});
+              $("#fname").css({"border":"1px solid green"});
+              $('#name').val(fname+" "+lname);
+          }
+          else{
+              $(this).css({"border":"1px solid red"});
+              flag=1;
+              lname_c=false;
+              $('#name').val('');
+          }
+
+      });
+
+    });
+</script>
+</html>

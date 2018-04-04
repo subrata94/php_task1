@@ -1,0 +1,8 @@
+api-key : 5c5d3534b5d2262ddda2c3c965ba4ff5
+
+http://apilayer.net/api/check
+
+    ? access_key = 5c5d3534b5d2262ddda2c3c965ba4ff5
+    & email = sdnath05@gmail.com
+    & smtp = 1
+    & format = 1
